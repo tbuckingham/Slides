@@ -366,6 +366,8 @@
     $element = $(@element)
     @data = $.data this
 
+    return unless @data.total > 1
+
     # Define slides control
     slidesControl = $(".slidesjs-control", $element)
 
@@ -516,7 +518,7 @@
         # Stop/pause slideshow on mouse enter
         slidesContainer.bind "mouseenter", =>
           clearTimeout @data.restartDelay
-					$.data this, "restartDelay", null
+          $.data this, "restartDelay", null
           @stop()
 
         # Play slideshow on mouse leave
